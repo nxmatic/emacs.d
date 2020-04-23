@@ -1,0 +1,3 @@
+*.elc
+*~
+straight/build-cache.el
