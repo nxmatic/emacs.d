@@ -1,14 +1,12 @@
 (require 'init-straight)
-
+(require 'init-org)
 
 (straight-use-package 'babel)
 
-(require 'babel)
-(require 'ob-shell)
-(org-babel-do-load-languages 'org-babel-load-languages
+(eval-after-load 'babel
+  (org-babel-do-load-languages 'org-babel-load-languages
 			     (append org-babel-load-languages
-				     '((plantuml . t)
-				       (shell . t)
-				       (dot . t))))
+				     '((shell . t)
+				       (dot . t)))))
 
 (provide 'init-babel)

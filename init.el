@@ -18,12 +18,14 @@
 ;; Packages
 ;; Without this comment Emacs25 adds (package-initialize) here
 
+(require 'init-nxmatic)
 (require 'init-display)
 (require 'init-babel)
 (require 'init-org)
 (require 'init-org-brain)
+(require 'init-plantuml)
 (require 'init-programming)
-(require 'init-nxmatic)
+(require 'init-k8s)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
