@@ -1,5 +1,4 @@
 (require 'init-straight)
-(require 'init-org)
 
 (straight-use-package 'babel)
 

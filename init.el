@@ -18,14 +18,16 @@
 ;; Packages
 ;; Without this comment Emacs25 adds (package-initialize) here
 
-(require 'init-nxmatic)
 (require 'init-display)
 (require 'init-babel)
 (require 'init-org)
-(require 'init-org-brain)
-(require 'init-plantuml)
-(require 'init-programming)
-(require 'init-k8s)
+(require 'init-org-gtd)
+;; (require 'init-org-brain)
+;; (require 'init-plantuml)
+;; (require 'init-coding)
+;; (require 'init-coding-jxlabs-nos)
+;; (require 'init-k8s)
+;(require 'init-nxmatic)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -38,19 +40,10 @@
  '(safe-local-variable-values
    (quote
     ((eval progn
-	   (setq-local org-id-track-globally t)
-	   (setq-local org-id-locations-file
-		       (expand-file-name ".org-id-locations"))
-	   (setq-local org-brain-backlink t))
-     (eval progn
-	   (setq-local org-brain-path
-		       (expand-file-name "."))
-	   (setq-local org-id-locations-file
-		       (expand-file-name ".org-id-locations" org-brain-path))
-	   (setq-local org-brain-id-locations-file
-		       (expand-file-name ".org-id-locations" org-brain-path))
-	   (setq-local org-id-track-globally t)
-	   (setq-local org-brain-backlink t))))))
+	   (require
+	    (quote init-coding-jxlabs-nos))
+	   (init-coding-jxlabs-nos)
+	   t)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
