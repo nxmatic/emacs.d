@@ -1,5 +1,8 @@
 (require 'init-straight)
 
+;; undo
+(straight-use-package 'undo-tree)
+  
 ;; git modes
 (straight-use-package 'magit)
 (straight-use-package 'magit-org-todos)
@@ -18,25 +21,26 @@
 (straight-use-package 'projectile-sift)
 (straight-use-package 'persp-projectile)
 
-(eval-after-load 'projectile
-  '(progn
+;; languages mode
+(straight-use-package 'groovy-mode)
+(straight-use-package 'java-mode+)
+(straight-use-package 'typescript-mode)
+(straight-use-package 'yaml-mode)
+
+(with-eval-after-load 'projectile
+  (progn
      (setq projectile-enable-caching t)
      (setq projectile-switch-project-action #'projectile-dired)
      (setq projectile-switch-project-action #'projectile-find-dir)
      (setq projectile-find-dir-includes-top-level t)
      (projectile-mode +1)
+     (persp-mode)
      t))
 
-(eval-after-load 'persp-projectile
-  '(progn
-     (define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)))
-
-;; coding modes
-(defun init-coding() 
-  (persp-mode)
-  t)
-
-(straight-use-package 'yaml-mode)
+(with-eval-after-load 'persp-projectile
+  (progn
+    (define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
+    t))
 
 (provide 'init-coding)
 

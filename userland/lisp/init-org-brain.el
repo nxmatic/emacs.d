@@ -22,15 +22,15 @@ If run interactively, get ENTRY from context."
     (org-with-point-at (org-brain-entry-marker entry)
       (org-noter)))
 
-(eval-after-load 'org-brain
-  '(progn
-     (require 'org)
-     (require 'org-noter)
-     (require 'org-capture)
-     (init-org-brain "~/brain")
-     (add-hook 'before-save-hook 'org-brain-ensure-ids-in-buffer)
-     (define-key org-brain-visualize-mode-map
-       (kbd "\C-c n") #'org-brain-open-org-noter)
-     t))
+(with-eval-after-load 'org-brain
+  (progn
+    (require 'org)
+    (require 'org-noter)
+    (require 'org-capture)
+    (init-org-brain "~/brain")
+    (add-hook 'before-save-hook 'org-brain-ensure-ids-in-buffer)
+    (define-key org-brain-visualize-mode-map
+      (kbd "\C-c n") #'org-brain-open-org-noter)
+    t))
 
 (provide 'init-org-brain)

@@ -1,3 +1,10 @@
 [submodule "straight/repos/straight.el"]
 	path = straight/repos/straight.el
 	url = https://github.com/raxod502/straight.el.git
+[submodule "radian"]
+	path = radian
+	url = https://github.com/raxod502/radian.git
+	branch = develop
+[submodule "chemacs"]
+	path = chemacs
+	url = https://github.com/plexus/chemacs.git
