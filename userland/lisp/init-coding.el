@@ -22,6 +22,7 @@
 (straight-use-package 'persp-projectile)
 
 ;; languages mode
+(straight-use-package 'go-mode)
 (straight-use-package 'groovy-mode)
 (straight-use-package 'java-mode+)
 (straight-use-package 'typescript-mode)
