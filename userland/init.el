@@ -26,6 +26,7 @@
 (require 'init-plantuml)
 (require 'init-coding)
 (require 'init-k8s)
+(require 'init-slack)
 (require 'init-nxmatic)
 
 (custom-set-variables
@@ -34,18 +35,30 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
+   '("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default))
  '(safe-local-variable-values
-   (quote
-    ((eval progn
-	   (require
-	    (quote init-coding-jxlabs-nos))
+   '((eval progn
+	   (unless
+	       (featurep 'jxlabs-nos/workspace)
+	     (let*
+		 ((this-directory
+		   (locate-dominating-file default-directory ".dir-locals.el"))
+		  (this-name
+		   (file-name-base this-directory))
+		  (this-lisp-directory
+		   (expand-file-name ".elisp.d" this-directory)))
+	       (push this-lisp-directory load-path)
+	       (require 'jxlabs-nos/workspace)))
+	   (jxlabs-nos/workspace/handle-buffer))
+     (eval progn
+	   (require 'init-coding-jxlabs-nos)
 	   (init-coding-jxlabs-nos)
-	   t)))))
+	   t))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

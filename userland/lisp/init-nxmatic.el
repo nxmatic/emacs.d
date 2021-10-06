@@ -1,5 +1,7 @@
 (require 'init-straight)
 
+(straight-use-package 'emamux)
+
 ;; (straight-use-recipes '(nxmatic :melpa nxmatic
 ;; 				:type git
 ;; 				:host github
@@ -10,5 +12,10 @@
     (progn
       (setq projectile-project-search-path '("~/" "~/Coding/nxmatic"))
       (projectile-discover-projects-in-search-path)))
+
+;; helm
+(straight-use-package 'helm)
+
+(require 'helm)
 
 (provide 'init-nxmatic)

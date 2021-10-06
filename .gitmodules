@@ -8,3 +8,6 @@
 [submodule "chemacs"]
 	path = chemacs
 	url = https://github.com/plexus/chemacs.git
+[submodule "chemacs2"]
+	path = chemacs2
+	url = https://github.com/plexus/chemacs2.git
