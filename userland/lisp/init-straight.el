@@ -19,6 +19,10 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+
 ;; required deps
 (straight-use-package 'w3m)
 

@@ -103,6 +103,8 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
      (setq projectile-switch-project-action #'projectile-dired)
      (setq projectile-switch-project-action #'projectile-find-dir)
      (setq projectile-find-dir-includes-top-level t)
+     (global-set-key (kbd "C-x C-b") 'persp-list-buffers)
+     (customize-set-variable 'persp-mode-prefix-key (kbd "C-c M-p"))
      (projectile-mode +1)
      (persp-mode)
      t))
