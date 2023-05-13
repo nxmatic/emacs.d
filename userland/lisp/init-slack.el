@@ -1,9 +1,8 @@
 (require 'init-straight)
 
-
 (straight-use-package 'alert)
 (straight-use-package 'circe)
-(straight-use-package 'emoji)
+(straight-use-package 'emoji-display)
 (straight-use-package 'oauth2)
 (straight-use-package 'request)
 (straight-use-package 'websocket)

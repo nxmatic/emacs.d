@@ -1,8 +1,15 @@
 (require 'init-straight)
 
+;; disable tab globally
+(progn
+  (setq indent-tab-mode nil)
+  (setq tab-width 2)
+  (setq c-tab-width 2)
+  (setq sh-basic-offset 2))
+
 ;; editor
 (straight-use-package 'undo-tree)
-(straight-use-package 'auto-minor-mode)
+;(straight-use-package 'auto-minor-mode)
 (straight-use-package 'show-point-mode)
 
 (use-package auto-minor-mode
@@ -22,17 +29,34 @@
 (straight-use-package 'direnv)
 
 ;; git modes
+(straight-use-package
+ '(compat             ;; required by magit git (obsolete)
+   :type git
+   :host github
+   :repo "emacs-straight/compat"
+   :files ("*" (:exclude ".git"))))
+
 (straight-use-package 'magit)
+
+(progn
+	(straight-use-package 'magit-delta)
+	(add-hook 'magit-mode-hook (lambda () (magit-delta-mode +1))))
+
 (straight-use-package 'magit-org-todos :config (direnv-mode))
 
 ;; dockerfile mode
 (straight-use-package 'dockerfile-mode)
 
+;; nix mode
+(straight-use-package 'nix-mode)
+(straight-use-package 'toml-mode)
+
+;; lua mode (vim)
+(straight-use-package 'lua-mode)
 
 ;; merge
 (straight-use-package 'hydra)
 
-(require 'smerge-mode)
 (use-package smerge-mode
   :after hydra
   :config
@@ -73,6 +97,7 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
                                    (when smerge-mode
                                      (unpackaged/smerge-hydra/body)))))
 
+(require 'smerge-mode)
 ;; project context
 
 (straight-use-package 'shadowenv) 
@@ -87,6 +112,9 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 (straight-use-package 'projectile-sift)
 (straight-use-package 'persp-projectile)
 
+;; helm setup
+(straight-use-package 'helm)
+
 ;; languages mode
 (straight-use-package 'go-mode)
 (straight-use-package 'groovy-mode)
@@ -99,15 +127,21 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 
 (with-eval-after-load 'projectile
   (progn
-     (setq projectile-enable-caching t)
-     (setq projectile-switch-project-action #'projectile-dired)
-     (setq projectile-switch-project-action #'projectile-find-dir)
-     (setq projectile-find-dir-includes-top-level t)
-     (global-set-key (kbd "C-x C-b") 'persp-list-buffers)
-     (customize-set-variable 'persp-mode-prefix-key (kbd "C-c M-p"))
-     (projectile-mode +1)
-     (persp-mode)
-     t))
+    (setq projectile-globally-ignored-directories
+	  '(
+	    ".Amphetamine.DriveAlive" ".DS_Store" ".DocumentRevisions-V100"
+	    ".Spotlight-V100" ".TemporaryItems" ".Trashes" ".fseventsd"
+	    ))
+    (setq projectile-enable-caching t)
+    (setq projectile-switch-project-action #'projectile-dired)
+    (setq projectile-switch-project-action #'projectile-find-dir)
+    (setq projectile-find-dir-includes-top-level t)
+    (setq projectile-project-search-path '("/Volumes/GitHub")) ;; to rename (Projects)
+    (global-set-key (kbd "C-x C-b") 'persp-list-buffers)
+    (customize-set-variable 'persp-mode-prefix-key (kbd "C-c M-p"))
+					; (projectile-discover-projects-in-search-path)(projectile-mode +1)
+    (persp-mode)
+    t))
 
 (with-eval-after-load 'persp-projectile
   (progn
@@ -115,4 +149,3 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
     t))
 
 (provide 'init-coding)
-
