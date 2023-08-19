@@ -18,6 +18,7 @@
 ;; Packages
 ;; Without this comment Emacs25 adds (package-initialize) here
 
+(require 'init-gnupg)
 (require 'init-xdg)
 (require 'init-display)
 (require 'init-babel)

@@ -1,5 +1,5 @@
-;(straight-use-package 'osx-clipboard)
+(straight-use-package 'osx-clipboard)
 
-;(osx-clipboard-mode +1)
+(osx-clipboard-mode +1)
 
 (provide 'init-display-darwin)

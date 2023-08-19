@@ -26,7 +26,16 @@
 (straight-use-package 'markdown-preview-mode)
 
 ;; direnv
-(straight-use-package 'direnv)
+(use-package direnv ; direnv integration
+  :straight t
+  :after lsp
+  :delight 'direnv-mode
+  :config
+  ;; Ensures that external dependencies are available before they are called.
+  (add-to-list 'warning-suppress-types '(direnv))
+  (add-hook 'prog-mode-hook #'direnv--maybe-update-environment)
+  (setq direnv-always-show-summary nil)
+  (direnv-mode 1))
 
 ;; git modes
 (straight-use-package
@@ -53,6 +62,10 @@
 
 ;; lua mode (vim)
 (straight-use-package 'lua-mode)
+
+
+;; java jdee mode 
+(straight-use-package 'jdee)
 
 ;; merge
 (straight-use-package 'hydra)
