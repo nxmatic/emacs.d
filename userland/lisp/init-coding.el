@@ -34,7 +34,7 @@
   ;; Ensures that external dependencies are available before they are called.
   (add-to-list 'warning-suppress-types '(direnv))
   (add-hook 'prog-mode-hook #'direnv--maybe-update-environment)
-  (setq direnv-always-show-summary nil)
+  (setq direnv-always-show-summary t)
   (direnv-mode 1))
 
 ;; git modes
@@ -65,7 +65,7 @@
 
 
 ;; java jdee mode 
-(straight-use-package 'jdee)
+;; (straight-use-package 'jdee)
 
 ;; merge
 (straight-use-package 'hydra)

@@ -58,9 +58,8 @@
 
 ;; clipboard (should go in a macos specific module)
 
-(straight-use-package 'simpleclip)
-(require 'simpleclip)
-(simpleclip-mode 1)
+;;(straight-use-package 'clipetty)
+;;(global-clipetty-mode 1)
 
 (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING))
 
